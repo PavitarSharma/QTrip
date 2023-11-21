@@ -16,7 +16,6 @@ exports.logout = exports.login = exports.signUp = void 0;
 const http_errors_1 = __importDefault(require("http-errors"));
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const services_1 = require("../services");
-const config_1 = require("../config");
 /*
     @desc Register
     @route POST /auth/register
@@ -61,7 +60,7 @@ exports.login = (0, express_async_handler_1.default)((req, res, next) => __await
     res.cookie("qtripJWT", refresh_token, {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        secure: config_1.NODE_ENV === "production" ? true : false,
+        secure: false,
     });
     res.status(200).json({
         accessToken: access_token,
@@ -79,7 +78,7 @@ exports.logout = (0, express_async_handler_1.default)((req, res, next) => __awai
         return next((0, http_errors_1.default)(240, "No content"));
     res.clearCookie("qtripJWT", {
         httpOnly: true,
-        secure: config_1.NODE_ENV === "production" ? true : false,
+        secure: false,
     });
     res.status(200).json({ message: "Logout successfully done." });
 }));

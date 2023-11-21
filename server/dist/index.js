@@ -22,17 +22,6 @@ const StartServer = () => __awaiter(void 0, void 0, void 0, function* () {
     const app = (0, express_1.default)();
     yield (0, Database_1.default)();
     yield (0, ExpressApp_1.default)(app);
-    const environment = config_1.NODE_ENV;
-    // Use the environment variable in your application logic
-    if (environment === "development") {
-        console.log("Running in development mode");
-    }
-    else if (environment === "production") {
-        console.log("Running in production mode");
-    }
-    else {
-        console.log("Running in an unknown environment");
-    }
     app.listen(config_1.PORT, () => console.log(`Server is listening to port ${config_1.PORT}`));
 });
 StartServer();

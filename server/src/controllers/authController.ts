@@ -10,7 +10,7 @@ import {
   generateSignature,
   validatePassword,
 } from "../services";
-import { NODE_ENV } from "../config";
+
 
 /* 
     @desc Register
@@ -69,7 +69,7 @@ export const login = asyncHandler(
     res.cookie("qtripJWT", refresh_token, {
       httpOnly: true,
       maxAge: 30 * 24 * 60 * 60 * 1000,
-      secure: NODE_ENV === "production" ? true : false,
+      secure: false,
     });
 
     res.status(200).json({
@@ -93,7 +93,7 @@ export const logout = asyncHandler(
 
     res.clearCookie("qtripJWT", {
       httpOnly: true,
-      secure: NODE_ENV === "production" ? true : false,
+      secure: false,
     });
 
     res.status(200).json({ message: "Logout successfully done." });

@@ -3,7 +3,7 @@ import axios from "axios";
 
 // export const BACKEND_URL = "http://localhost:5000";
 
-export const BACKEND_URL = "http://localhost:5000";
+export const BACKEND_URL = "https://qtrip-jt2d.onrender.com";
 
 export const axiosPublic = axios.create({
   baseURL: BACKEND_URL,
