@@ -1,6 +1,8 @@
 import { Store } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// export const BACKEND_URL = "http://localhost:5000";
+
 export const BACKEND_URL = "http://localhost:5000";
 
 export const axiosPublic = axios.create({

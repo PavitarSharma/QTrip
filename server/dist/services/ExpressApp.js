@@ -33,7 +33,7 @@ exports.default = (app) => __awaiter(void 0, void 0, void 0, function* () {
     app.get("/", (req, res) => {
         res.json({
             success: true,
-            message: "Hello from the shopo ecommerce backend",
+            message: "Hello from the qtrip backend",
         });
     });
     app.use("/auth", routes_1.authRoutes);

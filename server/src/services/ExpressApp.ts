@@ -31,7 +31,7 @@ export default async (app: Application) => {
   app.get("/", (req: Request, res: Response) => {
     res.json({
       success: true,
-      message: "Hello from the shopo ecommerce backend",
+      message: "Hello from the qtrip backend",
     });
   });
 
