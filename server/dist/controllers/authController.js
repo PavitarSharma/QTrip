@@ -57,11 +57,11 @@ exports.login = (0, express_async_handler_1.default)((req, res, next) => __await
         email: user.email,
         name: user.name,
     });
-    res.cookie("qtripJWT", refresh_token, {
-        httpOnly: true,
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        secure: false,
-    });
+    // res.cookie("qtripJWT", refresh_token, {
+    //   httpOnly: true,
+    //   maxAge: 30 * 24 * 60 * 60 * 1000,
+    //   secure: false,
+    // });
     res.status(200).json({
         accessToken: access_token,
         user,

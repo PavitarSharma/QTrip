@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { SelectAuthState, logOut } from "../redux/reducers/authSlice";
 import useUserProfile from "../hooks/useUserProfile";
 import useToggle from "../hooks/useToggle";
-import {  axiosPrivate } from "../http";
+// import {  axiosPrivate } from "../http";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axiosPrivate.post("/auth/logout");
+      // await axiosPrivate.post("/auth/logout");
       dispatch(logOut());
       profileToggle.onClose();
       toast.success("User logged out");
