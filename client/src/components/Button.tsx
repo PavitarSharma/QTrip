@@ -1,9 +1,9 @@
 interface ButtonProp {
   label: string;
   onClick: (
-    event?:
-      | React.MouseEvent<HTMLButtonElement>
+    event:
       | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void | Promise<void>;
   type?: "submit" | "button" | "reset";
   isLoading?: boolean;

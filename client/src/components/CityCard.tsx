@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { City } from "../utils/types";
-import { BACKEND_URL } from "../http";
+// import { BACKEND_URL } from "../http";
 
 type CityCardProp = {
   city: City | null;
@@ -12,8 +12,9 @@ const CityCard = ({ city }: CityCardProp) => {
       <div className="sm:h-[490px] h-[500px] w-full rounded-xl relative group cursor-pointer">
         <div className="w-full h-full">
           <img
-            src={`${BACKEND_URL}/${city?.image}`}
+            src={`${city?.image}`}
             alt={city?.city}
+            loading="lazy"
             className="w-full h-full object-cover rounded-xl"
           />
         </div>

@@ -1,6 +1,6 @@
 # QTrip Travel
 
-A Adventure website to explore the cities.
+A travel adventure website to explore the cities.
 
 ### MERN Stack Website With TypeScript & Redux
 

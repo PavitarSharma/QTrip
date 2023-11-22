@@ -21,7 +21,7 @@ const http_errors_1 = __importDefault(require("http-errors"));
 const routes_1 = require("../routes");
 exports.default = (app) => __awaiter(void 0, void 0, void 0, function* () {
     app.use((0, cors_1.default)({
-        origin: ["http://localhost:3002", "*"],
+        origin: ["http://localhost:3002", "*", "https://qtrip-travel-journey.netlify.app"],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
         credentials: true,
     }));

@@ -3,9 +3,9 @@ import { Button, Container, Input } from "../components";
 import useUserProfile from "../hooks/useUserProfile";
 import { Adventure } from "../utils/types";
 import { Link } from "react-router-dom";
-import { BACKEND_URL, axiosPrivate } from "../http";
+import {  axiosPrivate } from "../http";
 import toast from "react-hot-toast";
-import { FaEdit } from "react-icons/fa";
+// import { FaEdit } from "react-icons/fa";
 import { AxiosError } from "axios";
 
 const Profile = () => {
@@ -22,7 +22,7 @@ const Profile = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [image, setImage] = useState(user?.image);
+  // const [image, setImage] = useState(user?.image);
 
   useEffect(() => {
     if (user) {
@@ -35,7 +35,7 @@ const Profile = () => {
         city: user?.adddress?.city,
         pinCode: user?.adddress?.pinCode,
       });
-      setImage(user?.image);
+      // setImage(user?.image);
     }
   }, [user]);
 
@@ -48,7 +48,7 @@ const Profile = () => {
     });
   };
 
-  const onUpdateProfile = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onUpdateProfile = async (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     const responseBody = {
       name,
@@ -69,7 +69,7 @@ const Profile = () => {
     console.log(responseBody);
   };
 
-  const onPasswordUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onPasswordUpdate = async (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     setPasswordErrorMessage("");
 
@@ -111,38 +111,38 @@ const Profile = () => {
     }
   };
 
-  const handleUploadImage = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files ? event.target.files[0] : null;
+  // const handleUploadImage = async (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   const file = event.target.files ? event.target.files[0] : null;
 
-    if (file) {
-      setImage(file);
+  //   if (file) {
+  //     setImage(file);
 
-      const formData = new FormData();
-      formData.append("image", file);
+  //     const formData = new FormData();
+  //     formData.append("image", file);
 
-      try {
-        await axiosPrivate.patch("/user/profile/image", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        mutate("/user/profile/image");
-        toast.success("Your profile image uploaded successfully.");
-      } catch (error) {
-        // Handle error appropriately
-        console.error("Error uploading image:", error);
-        toast.error("Something went wrong when are you uploading the image.");
-      }
-    }
-  };
+  //     try {
+  //       await axiosPrivate.patch("/user/profile/image", formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       });
+  //       mutate("/user/profile/image");
+  //       toast.success("Your profile image uploaded successfully.");
+  //     } catch (error) {
+  //       // Handle error appropriately
+  //       console.error("Error uploading image:", error);
+  //       toast.error("Something went wrong when are you uploading the image.");
+  //     }
+  //   }
+  // };
 
   return (
     <Container>
       <div className="mt-12 mb-16 max-w-3xl w-full mx-auto">
         <div>
-          <div className="w-28 h-28 rounded-full border mb-6 relative">
+          {/* <div className="w-28 h-28 rounded-full border mb-6 relative">
             <label
               htmlFor="image"
               className=" w-6 h-6 rounded-full cursor-pointer absolute flex items-center justify-center bottom-6 -right-2"
@@ -168,7 +168,7 @@ const Profile = () => {
               className="w-full h-full rounded-full object-cover"
               alt="profile-image"
             />
-          </div>
+          </div> */}
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-6 gap-y-3">
             <Input
               name="name"

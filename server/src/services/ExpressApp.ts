@@ -16,7 +16,7 @@ import { adventureRoutes, authRoutes, cityRoutes, userRoutes } from "../routes";
 export default async (app: Application) => {
   app.use(
     cors({
-      origin: ["http://localhost:3002", "*"],
+      origin: ["http://localhost:3002", "*", "https://qtrip-travel-journey.netlify.app"],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
       credentials: true,
     })

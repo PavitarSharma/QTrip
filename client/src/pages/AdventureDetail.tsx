@@ -34,7 +34,6 @@ const AdventureDetail = () => {
     formState: { errors },
   } = useForm<FormInput>();
 
-
   const watchTotal = Number(watch("total")) || 0;
 
   useEffect(() => {
@@ -49,7 +48,20 @@ const AdventureDetail = () => {
     setActiveSlide(currentSlide);
   };
 
-  const PrevArrow: React.FC<{ onClick: React.MouseEventHandler }> = ({
+  const NextArrow: React.FC<{ onClick?: React.MouseEventHandler }> = ({
+    onClick,
+  }) => {
+    return (
+      <div
+        onClick={onClick}
+        className="bg-white text-black w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute right-0 z-10 top-1/2 right-4"
+      >
+        <MdChevronRight size={24} />
+      </div>
+    );
+  };
+
+  const PrevArrow: React.FC<{ onClick?: React.MouseEventHandler }> = ({
     onClick,
   }) => {
     return (
@@ -62,17 +74,8 @@ const AdventureDetail = () => {
     );
   };
 
-  const NextArrow: React.FC<{ onClick: React.MouseEventHandler }> = ({
-    onClick,
-  }) => {
-    return (
-      <div
-        onClick={onClick}
-        className="bg-white text-black w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute right-0 z-10 top-1/2 right-4"
-      >
-        <MdChevronRight size={24} />
-      </div>
-    );
+  const appendDots = (dots: React.ReactNode[]): JSX.Element => {
+    return <div className="">{dots}</div>;
   };
 
   const settings = {
@@ -88,8 +91,8 @@ const AdventureDetail = () => {
     afterChange: afterChangeHandler,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    appendDots: (dots) => <div className="">{dots}</div>,
-    customPaging: (i) => {
+    appendDots: appendDots,
+    customPaging: (i: number) => {
       return (
         <div
           className={`z-10 w-3 h-3 rounded-full border absolute border-gray-500 ${
@@ -271,7 +274,7 @@ const AdventureDetail = () => {
                 name="half-rating"
                 value={rating}
                 defaultValue={data?.reviews}
-                onChange={(event, newValue) => {
+                onChange={(_event, newValue) => {
                   handleRating(newValue);
                 }}
                 precision={0.5}

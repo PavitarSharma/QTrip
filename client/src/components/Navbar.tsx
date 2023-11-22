@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { SelectAuthState, logOut } from "../redux/reducers/authSlice";
 import useUserProfile from "../hooks/useUserProfile";
 import useToggle from "../hooks/useToggle";
-import { BACKEND_URL, axiosPrivate } from "../http";
+import {  axiosPrivate } from "../http";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
@@ -64,14 +64,15 @@ const Navbar = () => {
             <div
              ref={profileToggle.toggleRef}
              onClick={profileToggle.onToggle}
-              className="w-10 h-10 rounded-full relative border border-gray-400"
+              className="w-10 h-10 rounded-full relative"
             >
               <img
-                src={
-                  user && user?.image
-                    ? `${BACKEND_URL}/${user?.image}`
-                    : "https://res.cloudinary.com/pavitarsharma/image/upload/v1683457291/dm5pkbvd9q10mwqxrbdp.png"
-                }
+                // src={
+                //   user && user?.image
+                //     ? `${BACKEND_URL}/${user?.image}`
+                //     : "https://res.cloudinary.com/pavitarsharma/image/upload/v1683457291/dm5pkbvd9q10mwqxrbdp.png"
+                // }
+                src="https://res.cloudinary.com/pavitarsharma/image/upload/v1683457291/dm5pkbvd9q10mwqxrbdp.png"
                 alt="profile"
                 className="w-full h-full object-cover rounded-full cursor-pointer"
               />
